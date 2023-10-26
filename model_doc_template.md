@@ -34,7 +34,7 @@ The input data to the model are the pathology reports marked reportable by eMaRC
 
 
 ### Training data details
-
+Training data is a random sample from the diagnosis year 2021, and includes 40,000 pathology reports initially marked reportable by the rule-based eMaRC system. These reports are then manually reviewed by tumor registrars (TRs) to assign a label of true positive (a report containing reportable tumor pathology) or false positive (a report missing reportable tumor pathology). Being a large random sample, we assume it to be representative .
 
 ## Intended uses & limitations
 
