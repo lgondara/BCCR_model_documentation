@@ -10,7 +10,7 @@ base_model: emilyalsentzer/Bio_ClinicalBERT
 ---
 
 
-<img src="http://www.phsa.ca/_layouts/15/CUSTOM/EWI/assets/img/phsa/logo.png" alt="PHSA Logo" width="800" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
+<img src="http://www.phsa.ca/_layouts/15/CUSTOM/EWI/assets/img/phsa/logo.png" alt="PHSA Logo" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
 
 
 # Model summary
