@@ -47,13 +47,13 @@ train, test = train_test_split(train_data, test_size=0.375,random_state=100)
 ### Data preprocessing
 All reports are preprocessed by removing special characters ("X0D", ".br") and then are passed through a longformer model [valhalla/longformer-base-4096-finetuned-squadv1](https://huggingface.co/valhalla/longformer-base-4096-finetuned-squadv1) to extract relevant sections using the following questions.
 
-"Comment": "Can you extract the section which immediately follows a subheading containing 'comment' and exclude sections that occur after the next subheading?"
-"Addendum": "Can you extract the section which immediately follows a subheading containing 'addendum' and exclude sections that occur after the next subheading?"
-"Gross description": "Can you extract the section which immediately follows a subheading containing 'gross description' and exclude sections that occur after the next subheading?"
-"Diagnosis": "Can you extract only the section that describes the diagnosis and not a section that appears before or after the diagnosis?"
-"Clinical History": "Can you extract the section which immediately follows subheadings related to 'clinical history' or 'clinical information' and exclude sections that occur after the next subheading"
-"Microscopic": "Can you extract the section which immediately follows a subheading related to 'microscopic' and exclude sections that occur after the next subheading?"
-"Overall report": "Can you extract the overall report without metadata?"
+- "Comment": "Can you extract the section which immediately follows a subheading containing 'comment' and exclude sections that occur after the next subheading?"
+- "Addendum": "Can you extract the section which immediately follows a subheading containing 'addendum' and exclude sections that occur after the next subheading?"
+- "Gross description": "Can you extract the section which immediately follows a subheading containing 'gross description' and exclude sections that occur after the next subheading?"
+- "Diagnosis": "Can you extract only the section that describes the diagnosis and not a section that appears before or after the diagnosis?"
+- "Clinical History": "Can you extract the section which immediately follows subheadings related to 'clinical history' or 'clinical information' and exclude sections that occur after the next subheading"
+- "Microscopic": "Can you extract the section which immediately follows a subheading related to 'microscopic' and exclude sections that occur after the next subheading?"
+- "Overall report": "Can you extract the overall report without metadata?"
 
 The model is then trained on the truncated version of relevant report segment, truncated to ensure that the input complies with 512 token limitations of the base model (BERT). 
 
