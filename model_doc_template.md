@@ -45,7 +45,7 @@ train, test = train_test_split(train_data, test_size=0.375,random_state=100)
 ```
 
 ### Data preprocessing
-All reports are preprocessed by removing special characters ("X0D", ".br") and then are passed through a longformer model [valhalla/longformer-base-4096-finetuned-squadv1](https://huggingface.co/valhalla/longformer-base-4096-finetuned-squadv1) to extract relevant sections using the following questions.
+All reports are preprocessed by removing special characters ("X0D", ".br") and then are passed through a longformer model [valhalla/longformer-base-4096-finetuned-squadv1](https://huggingface.co/valhalla/longformer-base-4096-finetuned-squadv1) to extract relevant sections using the following question-answering approach.
 
 - "Comment": "Can you extract the section which immediately follows a subheading containing 'comment' and exclude sections that occur after the next subheading?"
 - "Addendum": "Can you extract the section which immediately follows a subheading containing 'addendum' and exclude sections that occur after the next subheading?"
@@ -55,7 +55,7 @@ All reports are preprocessed by removing special characters ("X0D", ".br") and t
 - "Microscopic": "Can you extract the section which immediately follows a subheading related to 'microscopic' and exclude sections that occur after the next subheading?"
 - "Overall report": "Can you extract the overall report without metadata?"
 
-The model is then trained on the truncated version of relevant report segment, truncated to ensure that the input complies with 512 token limitations of the base model (BERT). 
+The reportability filter model is then trained on the truncated version of relevant report segment, truncated to ensure that the input complies with 512 token limitations of the base model (BERT). 
 
 
 ## Intended uses & limitations
@@ -94,7 +94,7 @@ df[['predicted_label', 'model_score']] = df.apply(lambda x: pd.Series(class_mode
 
 Where the longformer segmentation model cannot find a specific segment and we use the entire report as the model input, we assign that report to the reportable class. This is done because during intitial investigation we found that the reports with missing xx section were almost all reportable.
 
-The impact of this approach is that if we use an input data of different format where the longformer model fails and the model ends up using the entire report, we might have a large number of falase positives.
+The impact of this approach is that if we use an input data of different format where the longformer model fails and the model ends up using the entire report, we might have a large number of false positives.
 
 
 Thresholding details if any:
