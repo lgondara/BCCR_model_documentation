@@ -83,7 +83,7 @@ Final Diagnosis:
 In summary, the diagnosis is [Summarized Diagnosis], considering all the histopathological features and additional observations, indicating [specific staging or grading information if applicable]."
 
 
-## Mode output
+## Model output
 Prediction if either the report is reportable or non-reportable (1 or 0) along with the model confidence score (probability from 0-1).
 
 ## Intended uses & limitations
