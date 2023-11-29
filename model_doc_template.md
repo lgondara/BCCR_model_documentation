@@ -58,6 +58,34 @@ All reports are preprocessed by removing special characters ("X0D", ".br") and t
 The reportability filter model is then trained on the truncated version of relevant report segment, truncated to ensure that the input complies with 512 token limitations of the base model (BERT). 
 
 
+### Model input
+Text after the preprocessing step. Example
+
+"Patient Information:
+The patient, [Patient's Name], [Age], presented with [Clinical History]. The medical record number is [MRN], and the procedure was conducted on [Date].
+
+Specimen Received:
+Tissue from a tumor located in [Anatomical Site] was received for examination, identified by Specimen ID [Specimen ID Number].
+
+Gross Description:
+The specimen consists of a [size], [shape], [color] tumor measuring approximately [dimensions] in the [anatomical location]. The tumor appears to be [description of tumor boundaries] and shows signs of [any visible invasion or relationship to surrounding tissues].
+
+Microscopic Examination:
+Histologically, the tumor presents as [Histological Type], graded as [Grade, if applicable]. Margins are [Description of margins - clear, involved, close, etc.]. The tumor measures [Size] and exhibits [presence/absence] of lymphovascular invasion. The mitotic rate is [Number of mitotic figures per high power field]. Immunohistochemistry showed [Results of specific stains performed].
+
+Diagnosis:
+The primary diagnosis is [Primary Diagnosis], with additional findings of [Additional Findings or Features] observed during examination.
+
+Pathologist's Comments:
+Further examination revealed [Pathologist's observations, any recommendations, or pertinent remarks based on the findings].
+
+Final Diagnosis:
+In summary, the diagnosis is [Summarized Diagnosis], considering all the histopathological features and additional observations, indicating [specific staging or grading information if applicable]."
+
+
+## Mode output
+Prediction if either the report is reportable or non-reportable (1 or 0) along with the model confidence score (probability from 0-1).
+
 ## Intended uses & limitations
 
 The model is finetuned on a random sample of 25000 pathology reports from the diagnosis year 2021. The model should only be used to distinguish between reportable and non-reportable tumor pathology reports. The model's performance can vary depending on the input data format, preprocessing, data distribution shift (concept drift), etc. The performance metrics provided below are on the test set only and should not be used for decision-making regarding the model deployment in a general scenario.
